@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://jromero.testsoap.br.dev/soap" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="BR.SoapBundle.Services.ApiService" targetNamespace="http://jromero.testsoap.br.dev/soap">
+  <types>
+    <xsd:schema targetNamespace="http://jromero.testsoap.br.dev/soap">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+    </xsd:schema>
+  </types>
+  <portType name="BR.SoapBundle.Services.ApiServicePort">
+    <operation name="insert">
+      <input message="tns:insertIn"/>
+      <output message="tns:insertOut"/>
+    </operation>
+    <operation name="update">
+      <input message="tns:updateIn"/>
+      <output message="tns:updateOut"/>
+    </operation>
+    <operation name="delete">
+      <input message="tns:deleteIn"/>
+      <output message="tns:deleteOut"/>
+    </operation>
+    <operation name="get">
+      <input message="tns:getIn"/>
+      <output message="tns:getOut"/>
+    </operation>
+    <operation name="getList">
+      <input message="tns:getListIn"/>
+      <output message="tns:getListOut"/>
+    </operation>
+  </portType>
+  <binding name="BR.SoapBundle.Services.ApiServiceBinding" type="tns:BR.SoapBundle.Services.ApiServicePort">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="insert">
+      <soap:operation soapAction="http://jromero.testsoap.br.dev/soap#insert"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://jromero.testsoap.br.dev/soap"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://jromero.testsoap.br.dev/soap"/>
+      </output>
+    </operation>
+    <operation name="update">
+      <soap:operation soapAction="http://jromero.testsoap.br.dev/soap#update"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://jromero.testsoap.br.dev/soap"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://jromero.testsoap.br.dev/soap"/>
+      </output>
+    </operation>
+    <operation name="delete">
+      <soap:operation soapAction="http://jromero.testsoap.br.dev/soap#delete"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://jromero.testsoap.br.dev/soap"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://jromero.testsoap.br.dev/soap"/>
+      </output>
+    </operation>
+    <operation name="get">
+      <soap:operation soapAction="http://jromero.testsoap.br.dev/soap#get"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://jromero.testsoap.br.dev/soap"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://jromero.testsoap.br.dev/soap"/>
+      </output>
+    </operation>
+    <operation name="getList">
+      <soap:operation soapAction="http://jromero.testsoap.br.dev/soap#getList"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://jromero.testsoap.br.dev/soap"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://jromero.testsoap.br.dev/soap"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="BR.SoapBundle.Services.ApiServiceService">
+    <port name="BR.SoapBundle.Services.ApiServicePort" binding="tns:BR.SoapBundle.Services.ApiServiceBinding">
+      <soap:address location="http://jromero.testsoap.br.dev/soap"/>
+    </port>
+  </service>
+  <message name="insertIn">
+    <part name="name" type="xsd:string"/>
+  </message>
+  <message name="insertOut">
+    <part name="return" type="xsd:int"/>
+  </message>
+  <message name="updateIn">
+    <part name="id" type="xsd:int"/>
+    <part name="name" type="xsd:string"/>
+  </message>
+  <message name="updateOut">
+    <part name="return" type="xsd:string"/>
+  </message>
+  <message name="deleteIn">
+    <part name="id" type="xsd:int"/>
+  </message>
+  <message name="deleteOut">
+    <part name="return" type="xsd:string"/>
+  </message>
+  <message name="getIn">
+    <part name="id" type="xsd:int"/>
+  </message>
+  <message name="getOut">
+    <part name="return" type="xsd:string"/>
+  </message>
+  <message name="getListIn"/>
+  <message name="getListOut">
+    <part name="return" type="xsd:string"/>
+  </message>
+</definitions>

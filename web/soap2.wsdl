@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://jromero.testsoap.br.dev/soap" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://jromero.testsoap.br.dev/soap">
+    <types>
+        <s:schema elementFormDefault="qualified" targetNamespace="http://jromero.testsoap.br.dev/soap">
+            <s:element name="hello">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="1" maxOccurs="1" name="name" type="s:string" />
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="helloResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="1" maxOccurs="1" name="hello" type="s:string" />
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+        </s:schema>
+    </types>
+    <message name="helloSoapIn">
+        <part name="parameters" element="tns:hello" />
+    </message>
+    <message name="helloSoapOut">
+        <part name="parameters" element="tns:helloResponse" />
+    </message>
+    <portType name="helloServiceSoap">
+        <operation name="hello">
+            <input message="tns:helloSoapIn" />
+            <output message="tns:helloSoapOut" />
+        </operation>
+    </portType>
+    <binding name="helloServiceSoap" type="tns:helloServiceSoap">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+        <operation name="hello">
+            <soap:operation soapAction="http://jromero.testsoap.br.dev/soap/hello" style="document" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+        </operation>
+    </binding>
+    <service name="helloService">
+        <port name="helloServiceSoap" binding="tns:helloServiceSoap">
+            <soap:address location="http://jromero.testsoap.br.dev/soap/" />
+        </port>
+    </service>
+</definitions>

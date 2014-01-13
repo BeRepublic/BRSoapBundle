@@ -1,0 +1,3 @@
+soap:
+    resource: "@SoapBundle/Resources/config/routing.yml"
+    prefix:   /soap

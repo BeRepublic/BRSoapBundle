@@ -1,0 +1,7 @@
+services:
+    soap_core:
+        class: BR\SoapBundle\Core\SoapCore
+        arguments: [@service_container]
+    br_soap_service:
+        class: BR\SoapBundle\Services\ApiService
+        arguments: ["@doctrine.orm.entity_manager"]

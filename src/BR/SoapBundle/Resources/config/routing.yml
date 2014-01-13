@@ -1,0 +1,7 @@
+br_soap:
+    path:   /
+    defaults:  { _controller: SoapBundle:Service:index}
+
+br_soap_test:
+    path:   /test
+    defaults:  { _controller: SoapBundle:Service:test}
